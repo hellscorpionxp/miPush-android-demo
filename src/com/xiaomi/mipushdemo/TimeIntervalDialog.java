@@ -1,5 +1,7 @@
 package com.xiaomi.mipushdemo;
 
+import com.example.hellscorpion.R;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
@@ -8,7 +10,8 @@ import android.widget.Button;
 import android.widget.TimePicker;
 import android.widget.TimePicker.OnTimeChangedListener;
 
-public class TimeIntervalDialog extends Dialog implements OnTimeChangedListener {
+public class TimeIntervalDialog extends Dialog
+    implements OnTimeChangedListener {
 
     private TimeIntervalInterface mTimeIntervalInterface;
     private Context mContext;
@@ -22,7 +25,8 @@ public class TimeIntervalDialog extends Dialog implements OnTimeChangedListener 
             switch (v.getId()) {
                 case R.id.apply:
                     dismiss();
-                    mTimeIntervalInterface.apply(mStartHour, mStartMinute, mEndHour, mEndMinute);
+                    mTimeIntervalInterface.apply(mStartHour, mStartMinute,
+                        mEndHour, mEndMinute);
                     break;
                 case R.id.cancel:
                     dismiss();
@@ -34,8 +38,9 @@ public class TimeIntervalDialog extends Dialog implements OnTimeChangedListener 
         }
     };
 
-    public TimeIntervalDialog(Context context, TimeIntervalInterface timeIntervalInterface,
-                              int startHour, int startMinute, int endHour, int endMinute) {
+    public TimeIntervalDialog(Context context,
+        TimeIntervalInterface timeIntervalInterface, int startHour,
+        int startMinute, int endHour, int endMinute) {
         super(context);
         mContext = context;
         this.mTimeIntervalInterface = timeIntervalInterface;
@@ -45,7 +50,8 @@ public class TimeIntervalDialog extends Dialog implements OnTimeChangedListener 
         this.mEndMinute = endMinute;
     }
 
-    public TimeIntervalDialog(Context context, TimeIntervalInterface timeIntervalInterface) {
+    public TimeIntervalDialog(Context context,
+        TimeIntervalInterface timeIntervalInterface) {
         this(context, timeIntervalInterface, 0, 0, 23, 59);
     }
 

@@ -1,5 +1,11 @@
 package com.xiaomi.mipushdemo;
 
+import java.util.List;
+
+import com.xiaomi.channel.commonutils.logger.LoggerInterface;
+import com.xiaomi.mipush.sdk.Logger;
+import com.xiaomi.mipush.sdk.MiPushClient;
+
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.Application;
@@ -11,29 +17,27 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.xiaomi.channel.commonutils.logger.LoggerInterface;
-import com.xiaomi.mipush.sdk.Logger;
-import com.xiaomi.mipush.sdk.MiPushClient;
-
-import java.util.List;
-
 /**
  * 1、为了打开客户端的日志，便于在开发过程中调试，需要自定义一个 Application。
  * 并将自定义的 application 注册在 AndroidManifest.xml 文件中。<br/>
- * 2、为了提高 push 的注册率，您可以在 Application 的 onCreate 中初始化 push。你也可以根据需要，在其他地方初始化 push。
+ * 2、为了提高 push 的注册率，您可以在 Application 的 onCreate 中初始化 push。你也可以根据需要，在其他地方初始化
+ * push。
  *
  * @author wangkuiwei
  */
 public class DemoApplication extends Application {
 
     // user your appid the key.
-    private static final String APP_ID = "1000270";
+    // private static final String APP_ID = "1000270";
+    private static final String APP_ID = "2882303761517726032";
     // user your appid the key.
-    private static final String APP_KEY = "670100056270";
+    // private static final String APP_KEY = "670100056270";
+    private static final String APP_KEY = "5661772626032";
 
     // 此TAG在adb logcat中检索自己所需要的信息， 只需在命令行终端输入 adb logcat | grep
     // com.xiaomi.mipushdemo
-    public static final String TAG = "com.xiaomi.mipushdemo";
+    // public static final String TAG = "com.xiaomi.mipushdemo";
+    public static final String TAG = "com.example.hellscorpion";
 
     private static DemoHandler sHandler = null;
     private static MainActivity sMainActivity = null;
@@ -72,7 +76,8 @@ public class DemoApplication extends Application {
     }
 
     private boolean shouldInit() {
-        ActivityManager am = ((ActivityManager) getSystemService(Context.ACTIVITY_SERVICE));
+        ActivityManager am = ((ActivityManager) getSystemService(
+            Context.ACTIVITY_SERVICE));
         List<RunningAppProcessInfo> processInfos = am.getRunningAppProcesses();
         String mainProcessName = getPackageName();
         int myPid = Process.myPid();
